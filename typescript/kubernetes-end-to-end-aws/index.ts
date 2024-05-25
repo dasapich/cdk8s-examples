@@ -1,9 +1,9 @@
 import { Construct } from 'constructs';
 import * as k8s from 'cdk8s';
-import * as kplus from 'cdk8s-plus-25';
+import * as kplus from 'cdk8s-plus-29';
 import * as aws from 'aws-cdk-lib';
 import * as eks from 'aws-cdk-lib/aws-eks';
-import * as kubectl from '@aws-cdk/lambda-layer-kubectl-v25'
+import * as kubectl from '@aws-cdk/lambda-layer-kubectl-v29'
 
 export class KubernetesEnd2End extends aws.Stack {
   constructor(scope: Construct, name: string) {
@@ -13,21 +13,21 @@ export class KubernetesEnd2End extends aws.Stack {
     // is specify a version, and it will create a 2 node cluster inside a dedicated VPC.
     // this can also be an imported cluster that has been pre-created with the AWS CDK.
     const cluster = new eks.Cluster(this, 'Cluster', {
-      version: eks.KubernetesVersion.V1_25,
+      version: eks.KubernetesVersion.V1_29,
 
       // In order to access applications inside the clusters from the internet,
       // the cluster needs the ability to provision on-demand AWS load balancers that
       // route to internal Kubernetes resources.
       // (see https://github.com/aws/aws-cdk/tree/main/packages/aws-cdk-lib/aws-eks#alb-controller)
       albController: {
-        version: eks.AlbControllerVersion.V2_4_1,
+        version: eks.AlbControllerVersion.V2_6_2,
       },
 
       // In addition, the `eks.Cluster` construct is able to apply Kubernetes manifests onto the
       // cluster (we will use that capability later) via the `kubectl` utility.
       // Kubernetes recommends to always match the version of `kubectl` to the version of your
       // cluster.
-      kubectlLayer: new kubectl.KubectlV25Layer(this, 'Kubectl'),
+      kubectlLayer: new kubectl.KubectlV29Layer(this, 'Kubectl'),
 
     });
 

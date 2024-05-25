@@ -12,14 +12,14 @@
     "destroy": "cdk destroy"
   },
   "dependencies": {
-    "cdk8s": "^2.66.2",
-    "cdk8s-plus-25": "^2.22.65",
-    "aws-cdk-lib": "^2.69.0",
+    "cdk8s": "^2.68.71",
+    "cdk8s-plus-29": "^2.3.4",
+    "aws-cdk-lib": "^2.143.0",
     "constructs": "^10.3.0",
-    "@aws-cdk/lambda-layer-kubectl-v25": "^2.0.3"
+    "@aws-cdk/lambda-layer-kubectl-v29": "^2.0.0"
   },
   "devDependencies": {
-    "aws-cdk": "^2.69.0",
-    "ts-node": "^10.9.1"
+    "aws-cdk": "^2.143.0",
+    "ts-node": "^10.9.2"
   }
 }
